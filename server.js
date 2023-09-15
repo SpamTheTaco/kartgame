@@ -230,8 +230,14 @@ function vertHorz(
   let right2 = countTrueArr2[3];
 
 
- console.log("Total Users 1: " + totalUsers1);
-  console.log("Total Users 2: " + totalUsers2);
+ console.log("Total Users 1: " + totalUsers1 + " Total Users 2: " + totalUsers2);
+
+    if (totalUsers1 == 0) {
+    totalUsers1 = 1;
+  }
+  if (totalUsers2 == 0) {
+    totalUsers2 = 1;
+  }
   //if (userTotal != 0) {
   //count all up arrwos
   horzVertArr.push(
