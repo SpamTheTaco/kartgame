@@ -67,7 +67,7 @@ io.on("connection", (socket) => {
   );
   socket.on("disconnect", (data) => {
     // Remove the disconnected user
-
+    user.payload[false, false, false, false];
     /*likely throws an error check*/
     connectedUsersRoom1.delete(socket.id);
     connectedUsersRoom2.delete(socket.id);
