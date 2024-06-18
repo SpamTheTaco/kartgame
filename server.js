@@ -84,6 +84,8 @@ io.on("connection", (socket) => {
   socket.on("joinRoom", (roomName) => {
     socket.join(roomName);
     //console.log(`User joined room: ${roomName}`);
+    io.emit("updateClickCountRoom1", buttonClickCountRoom1);
+    io.emit("updateClickCountRoom2", buttonClickCountRoom2);
   });
 
   //recive a message called arrow and then brodcast pong to all clients
