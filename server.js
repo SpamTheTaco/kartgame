@@ -42,6 +42,9 @@ const connectedUsersRoom2 = new Map();
 
 let countArray1 = [];
 let countArray2 = [];
+let buttonClickCountRoom1 = 0; // Counter for Room 1
+let buttonClickCountRoom2 = 0; // Counter for Room 2
+
 io.on("connection", (socket) => {
   // Handle new connection
   console.log("New user connected:", socket.id);
@@ -92,6 +95,25 @@ io.on("connection", (socket) => {
     const status = data[1];
     const roomName = data[2];
 
+    //Button Game logic
+    if (option === "btnGame" && status) {
+      if (roomName === "team1") {
+        buttonClickCountRoom1++;
+        io.emit("updateClickCountRoom1", buttonClickCountRoom1);
+      } else if (roomName === "team2") {
+        buttonClickCountRoom2++;
+        io.emit("updateClickCountRoom2", buttonClickCountRoom2);
+      } else if (roomName === "admin") {
+       
+        buttonClickCountRoom1 = 0;
+        buttonClickCountRoom2 = 0;
+        io.emit("updateClickCountRoom1", buttonClickCountRoom1);
+        io.emit("updateClickCountRoom2", buttonClickCountRoom2);
+      }
+      console.log(buttonClickCountRoom1,buttonClickCountRoom2);
+    }
+
+    //Driving logic
     if (roomName == "team1") {
       // Store the connected user
       connectedUsersRoom1.set(socket.id, user);
